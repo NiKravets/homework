@@ -1,12 +1,11 @@
-﻿// Задача 1: Задайте массив заполненный случайными положительными трёхзначными числами. Напишите программу, которая покажет количество чётных чисел в массиве.
-// [345, 897, 568, 234] -> 2
+﻿// Задача 2: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
 int[] RandArray(int lenght)
 {
 
     int[] answer = new int[lenght];
     for (int i = 0; i < lenght; i++)
     {
-        answer[i] = new Random().Next(100, 1000);
+        answer[i] = new Random().Next(10, 100);
     }
     return answer;
 }
@@ -27,17 +26,16 @@ int Prompt(string message)
     int Value = int.Parse(strValue);
     return Value;
 }
-int NumEven(int[] arr)
+int SumOdd(int[] arr)
 {
-    int count = 0;
-    for (int i = 0; i < arr.Length; i++)
+    int sum = 0;
+    for(int i = 0; i < arr.Length; i = i + 2)
     {
-        if (arr[i] % 2 == 0) count++;
+        sum = sum + arr[i];
     }
-    return count;
+    return sum;
 }
-
 int len = Prompt("Введите длину массива => ");
 int[] arr = RandArray(len);
 PrintArray(arr);
-Console.WriteLine($" => {NumEven(arr)}");
+Console.WriteLine($" => {SumOdd(arr)}");
